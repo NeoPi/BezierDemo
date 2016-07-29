@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0,Menu.FIRST + 1,0,"曲线变形动画");
         menu.add(0,Menu.FIRST + 2,0,"波浪动画");
         menu.add(0,Menu.FIRST + 3,0,"曲线动画");
+        menu.add(0,Menu.FIRST + 4,0,"拟合动画");
         break;
     }
   }
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         break;
       case Menu.FIRST + 3:
         startActivity(new Intent(MainActivity.this,PathAnimationActivity.class));
+        break;
+      case Menu.FIRST + 4:
+        startActivity(new Intent(MainActivity.this,FitBezierActivity.class));
         break;
 
     }

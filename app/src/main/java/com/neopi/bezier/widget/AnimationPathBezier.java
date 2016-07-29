@@ -9,15 +9,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import com.neopi.bezier.utils.BezierUtils;
 
 /**
  * 该view主要是利用贝塞尔曲线完成的动画效果，这里的变量是写死在代码里的，自行扩展
- *
+ * <p/>
  * Created by neopi on 16-7-29.
  */
 public class AnimationPathBezier extends View {

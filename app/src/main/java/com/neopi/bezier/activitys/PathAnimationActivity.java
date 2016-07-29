@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import com.neopi.bezier.R;
 import com.neopi.bezier.widget.AnimationPathBezier;
+import com.neopi.bezier.widget.CalculateBezierPointView;
 
 /**
  * Created by neopi on 16-7-29.
@@ -14,7 +15,7 @@ import com.neopi.bezier.widget.AnimationPathBezier;
 public class PathAnimationActivity extends AppCompatActivity {
 
 
-  private AnimationPathBezier mAnimationPathBezier ;
+  private CalculateBezierPointView mAnimationPathBezier ;
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_path_animation_bezier);
@@ -24,7 +25,7 @@ public class PathAnimationActivity extends AppCompatActivity {
         mAnimationPathBezier.start();
       }
     }.sendEmptyMessageDelayed(0x11,2000);
-    mAnimationPathBezier = (AnimationPathBezier) findViewById(R.id.anim_path);
+    mAnimationPathBezier = (CalculateBezierPointView) findViewById(R.id.anim_path);
 
   }
 

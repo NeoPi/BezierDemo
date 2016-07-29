@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+>
 
-    <com.neopi.bezier.widget.CalculateBezierPointView
-      android:id="@+id/anim_path"
+  <com.neopi.bezier.widget.RectangleBezier
+      android:id="@+id/fit_one"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-    />
 
+  />
 </RelativeLayout>

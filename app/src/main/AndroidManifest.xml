@@ -19,6 +19,7 @@
     <activity android:name=".activitys.PathMorphAnimertorActivity"/>
     <activity android:name=".activitys.WaveBezierActivity"/>
     <activity android:name=".activitys.PathAnimationActivity"/>
+    <activity android:name=".activitys.FitBezierActivity"/>
   </application>
 
 </manifest>
