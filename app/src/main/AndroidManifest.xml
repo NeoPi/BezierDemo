@@ -18,6 +18,7 @@
     <activity android:name=".activitys.ThreeOrderActivity"/>
     <activity android:name=".activitys.PathMorphAnimertorActivity"/>
     <activity android:name=".activitys.WaveBezierActivity"/>
+    <activity android:name=".activitys.PathAnimationActivity"/>
   </application>
 
 </manifest>

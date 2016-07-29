@@ -84,7 +84,7 @@ public class WaveBezier extends View {
    */
   private ValueAnimator animator ;
   private boolean rise = true; // 水位上升
-  private int paintAlpha = 10;
+  private int paintAlpha = 30; // 设置透明度
   public void start() {
     PropertyValuesHolder xholder = PropertyValuesHolder.ofInt("X",0,mWaveLength);
     //PropertyValuesHolder yholder = PropertyValuesHolder.ofInt("Y",0,mCenterY);
