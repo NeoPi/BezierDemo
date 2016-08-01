@@ -6,7 +6,6 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import com.neopi.bezier.R;
-import com.neopi.bezier.widget.AnimationPathBezier;
 import com.neopi.bezier.widget.CalculateBezierPointView;
 
 /**

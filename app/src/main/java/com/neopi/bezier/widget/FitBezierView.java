@@ -6,13 +6,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 
 /**
  * Created by neopi on 16-7-29.
  */
-public class RectangleBezier extends View {
+public class FitBezierView extends View {
 
   private static final String TAG = "RectangleBezier";
 
@@ -27,15 +26,15 @@ public class RectangleBezier extends View {
 
   private static final int RADIUS = 80;
 
-  public RectangleBezier(Context context) {
+  public FitBezierView(Context context) {
     this(context,null);
   }
 
-  public RectangleBezier(Context context, AttributeSet attrs) {
+  public FitBezierView(Context context, AttributeSet attrs) {
     this(context, attrs,0);
   }
 
-  public RectangleBezier(Context context, AttributeSet attrs, int defStyleAttr) {
+  public FitBezierView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
     initData();
   }

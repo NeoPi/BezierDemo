@@ -20,6 +20,7 @@
     <activity android:name=".activitys.WaveBezierActivity"/>
     <activity android:name=".activitys.PathAnimationActivity"/>
     <activity android:name=".activitys.FitBezierActivity"/>
+    <activity android:name=".activitys.DragCircleActivity"/>
   </application>
 
 </manifest>

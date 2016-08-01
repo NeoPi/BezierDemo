@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
 >
 
-  <com.neopi.bezier.widget.FitBezierView
-      android:id="@+id/fit_one"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
+  <com.neopi.bezier.widget.DragBezier
+      android:id="@+id/drag_circle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
 
   />
 </RelativeLayout>
