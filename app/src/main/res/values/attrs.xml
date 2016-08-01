@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <declare-styleable name="DragBezier">
+
+    <attr name="dragText" format="string|reference"/>
+    <attr name="dragTextSize" format="dimension"/>
+    <attr name="dragTextColor" format="color"/>
+    <attr name="dragColor" format="color"/>
+
+  </declare-styleable>
+</resources>
