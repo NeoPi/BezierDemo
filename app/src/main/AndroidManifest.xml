@@ -21,6 +21,7 @@
     <activity android:name=".activitys.PathAnimationActivity"/>
     <activity android:name=".activitys.FitBezierActivity"/>
     <activity android:name=".activitys.DragCircleActivity"/>
+    <activity android:name=".activitys.BezierLoadingActivity"/>
   </application>
 
 </manifest>

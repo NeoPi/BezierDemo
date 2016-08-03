@@ -11,11 +11,11 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.BounceInterpolator;
 import com.neopi.bezier.R;
 
 /**
+ *
  * Created by neopi on 16-7-29.
  */
 public class DragBezier extends View {
@@ -37,7 +37,8 @@ public class DragBezier extends View {
   private int mPointTwoX; // 第二个圆的圆心坐标
   private int mPointTwoY;
 
-  private int RADIUS = 50;
+  private int DEF_RADIUS = 50;
+  private double radius = DEF_RADIUS ;
   private int breakLen = 300; // 拉断距离
 
   public DragBezier(Context context) {
@@ -83,11 +84,11 @@ public class DragBezier extends View {
     mPath = new Path();
 
     mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    mPaint.setStyle(Paint.Style.FILL);
+    mPaint.setStyle(Paint.Style.STROKE);
     mPaint.setColor(mPaintcolor);
 
     mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    mTextPaint.setStyle(Paint.Style.FILL);
+    mTextPaint.setStyle(Paint.Style.STROKE);
     mTextPaint.setColor(mTextPaintColor);
     mTextPaint.setTextSize(mTextSize);
 
@@ -108,7 +109,7 @@ public class DragBezier extends View {
     //int height = MeasureSpec.getSize(heightMeasureSpec);
     //int wid = Math.min(width,height);
     //
-    //RADIUS = wid/2;
+    //DEF_RADIUS = wid/2;
     //setMeasuredDimension(wid,wid);
   }
 
@@ -124,21 +125,22 @@ public class DragBezier extends View {
 
     /* 控制点到起始点的距离 */
     double distance = Math.sqrt((dx * dx) + (dy * dy));
-    double acos = Math.acos(RADIUS / distance);
+    radius = - distance / 9 + DEF_RADIUS;
+    double atan = Math.acos(radius / distance);
 
     double acos1 = Math.acos(dx / distance);
-    int x1 = mPointOneX + (int) ((RADIUS - 10) * Math.cos(acos - acos1));
-    int y1 = mPointOneY - (int) ((RADIUS - 10) * Math.sin(acos - acos1));
+    int x1 = mPointOneX + (int) ((radius) * Math.cos(atan - acos1));
+    int y1 = mPointOneY - (int) ((radius) * Math.sin(atan - acos1));
 
     double acos2 = Math.asin(dx / distance);
-    int x2 = mPointOneX - (int) ((RADIUS - 10) * Math.sin(acos - acos2));
-    int y2 = mPointOneY + (int) ((RADIUS - 10) * Math.cos(acos - acos2));
+    int x2 = mPointOneX - (int) ((radius) * Math.sin(atan - acos2));
+    int y2 = mPointOneY + (int) ((radius) * Math.cos(atan - acos2));
 
-    int x3 = mPointTwoX + (int) (RADIUS * Math.sin(acos - acos2));
-    int y3 = mPointTwoY - (int) (RADIUS * Math.cos(acos - acos2));
+    int x3 = mPointTwoX + (int) (radius * Math.sin(atan - acos2));
+    int y3 = mPointTwoY - (int) (radius * Math.cos(atan - acos2));
 
-    int x4 = mPointTwoX - (int) (RADIUS * Math.cos(acos - acos1));
-    int y4 = mPointTwoY + (int) (RADIUS * Math.sin(acos - acos1));
+    int x4 = mPointTwoX - (int) (radius * Math.cos(atan - acos1));
+    int y4 = mPointTwoY + (int) (radius * Math.sin(atan - acos1));
     /* (x1,y1),(x2,y2),(x3,y3) ,(x4,y4) 这四个点分别对应第一个圆与第二个圆上的四个切点*/
 
 
@@ -148,8 +150,12 @@ public class DragBezier extends View {
     mPath.quadTo(mControlPointX, mControlPointY, x2, y2);
     mPath.lineTo(x1, y1);
 
-    canvas.drawCircle(mPointOneX, mPointOneY, RADIUS - 10, mPaint);
-    canvas.drawCircle(mPointTwoX, mPointTwoY, RADIUS, mPaint);
+    canvas.drawCircle(mPointOneX, mPointOneY, (float) radius, mPaint);
+    canvas.drawCircle(mPointTwoX, mPointTwoY, (float) radius, mPaint);
+    //canvas.drawCircle(x1, y1, 5, mPaint);
+    //canvas.drawCircle(x2 , y2, 5, mPaint);
+    //canvas.drawCircle(x3, y3, 5, mPaint);
+    //canvas.drawCircle(x4, y4, 5, mPaint);
     canvas.drawPath(mPath, mPaint);
     canvas.drawText(text,(mPointTwoX-mTextPaint.measureText(text) / 2),(mPointTwoY+mTextPaint.measureText(text,0,1) / 2),mTextPaint);
   }
@@ -167,10 +173,11 @@ public class DragBezier extends View {
         int lenght =
             (int) Math.sqrt((mPointTwoX - mPointOneX)*(mPointTwoX - mPointOneX) + (mPointTwoY - mPointOneY)*(mPointTwoY - mPointOneY));
         if (lenght > breakLen){
-          hindPointOne();
+          //hindPointOne();
         } else {
-          invalidate();
+          //invalidate();
         }
+        invalidate();
         break;
       case MotionEvent.ACTION_UP:
         mPointTwoX = (int) event.getX();
@@ -178,7 +185,7 @@ public class DragBezier extends View {
         int distance =
             (int) Math.sqrt((mPointTwoX - mPointOneX)*(mPointTwoX - mPointOneX) + (mPointTwoY - mPointOneY)*(mPointTwoY - mPointOneY));
         if (distance <= breakLen) {
-          reset();
+          //reset();
         }
         break;
     }
@@ -201,7 +208,7 @@ public class DragBezier extends View {
         invalidate();
       }
     });
-    animator.start();
+    //animator.start();
   }
 
   private void reset() {
@@ -217,7 +224,7 @@ public class DragBezier extends View {
         invalidate();
       }
     });
-    animator.start();
+    //animator.start();
   }
 }
 

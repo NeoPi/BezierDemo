@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0,Menu.FIRST + 3,0,"曲线动画");
         menu.add(0,Menu.FIRST + 4,0,"拟合动画");
         menu.add(0,Menu.FIRST + 5,0,"拟合动画实现QQ未读消息小红点");
+        menu.add(0,Menu.FIRST + 6,0,"拟合动画实现加载动画");
         break;
     }
   }
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         break;
       case Menu.FIRST + 5:
         startActivity(new Intent(MainActivity.this,DragCircleActivity.class));
+        break;
+      case Menu.FIRST + 6:
+        startActivity(new Intent(MainActivity.this,BezierLoadingActivity.class));
         break;
 
     }
